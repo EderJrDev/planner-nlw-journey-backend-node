@@ -11,5 +11,13 @@
       "src": "(.*)",
       "dest": "src/server.ts"
     }
-  ]
+  ],
+  "env": {
+    "DATABASE_URL": "file:./prisma/dev.db"
+  },
+  "build": {
+    "env": {
+      "DATABASE_URL": "file:./prisma/dev.db"
+    }
+  }
 }
