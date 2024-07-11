@@ -13,6 +13,9 @@
   "prisma": {
     "schema": "src/prisma/schema.prisma"
   },
+  "postinstall": "prisma generate",
+  "vercel-build": "npx prisma migrate deploy",
+  "build": "prisma generate && next build",
   "keywords": [],
   "author": "",
   "license": "ISC",
