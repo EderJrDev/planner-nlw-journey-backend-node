@@ -11,10 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "prisma": {
-    "schema": "src/prisma/schema.prisma"
+    "schema": "prisma/schema.prisma"
   },
   "keywords": [],
-  "author": "",
+  "author": "EderJrDev",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.14.10",
