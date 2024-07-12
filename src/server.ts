@@ -39,6 +39,11 @@ app.register(updateTrip);
 app.register(getTripDetails);
 app.register(getParticipant);
 
+// test route
+app.get("/", (req, res) => {
+  res.send("API Working!");
+})
+
 app.listen({ port: 3333 }).then(() => {
   console.log("Server running");
 });
