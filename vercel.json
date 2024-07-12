@@ -13,11 +13,11 @@
     }
   ],
   "env": {
-    "DATABASE_URL": "file:./prisma/dev.db"
+    "DATABASE_URL": "postgresql://db_planner_owner:sENHm1Oz9wio@ep-fragrant-breeze-a5cps3qp-pooler.us-east-2.aws.neon.tech/db_planner?sslmode=require"
   },
   "build": {
     "env": {
-      "DATABASE_URL": "file:./prisma/dev.db"
+      "DATABASE_URL": "postgresql://db_planner_owner:sENHm1Oz9wio@ep-fragrant-breeze-a5cps3qp-pooler.us-east-2.aws.neon.tech/db_planner?sslmode=require"
     }
   }
 }
