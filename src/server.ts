@@ -20,7 +20,8 @@ import { getParticipant } from "./routes/get-participant";
 const app = fastify();
 
 app.register(cors, {
-  origin: "*",
+  credentials: true,
+  origin: "http://localhost:5173",
 });
 
 app.setValidatorCompiler(validatorCompiler);
