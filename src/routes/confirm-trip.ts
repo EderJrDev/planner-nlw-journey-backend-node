@@ -48,12 +48,18 @@ export async function confirmTrip(app: FastifyInstance) {
       const formattedStartDate = dayjs(trip.starts_at).format("LL");
       const formattedEndDate = dayjs(trip.ends_at).format("LL");
 
-      const mail = await getMailClient();
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_PASS
+        }
+      });
 
       await Promise.all(
         trip.participants.map(async (participant) => {
-          const confirmationLink = `http://localhost:3333/participants/${participant.id}/confirm`;
-          const message = await mail.sendMail({
+          const confirmationLink = `https://planner-nlw-journey-backend-node.vercel.app/participants/${participant.id}/confirm`;
+          const message = await transporter.sendMail({
             from: {
               name: "Equipe plann.er",
               address: "oi@plann.er",
@@ -79,7 +85,7 @@ export async function confirmTrip(app: FastifyInstance) {
         })
       );
 
-      return reply.redirect(`http://localhost:3000/trips/${tripId}`);
+      return reply.redirect(`http://localhost:5173/trips/${tripId}`);
     }
   );
 }

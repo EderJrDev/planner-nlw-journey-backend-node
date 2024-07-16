@@ -74,11 +74,17 @@ export async function createTrip(app: FastifyInstance) {
       const formattedStartDate = dayjs(starts_at).format("LL");
       const formattedEndDate = dayjs(ends_at).format("LL");
 
-      const confirmationLink =  `http://localhost:3333/trips/${trip.id}/confirm`
+      const confirmationLink =  `https://planner-nlw-journey-backend-node.vercel.app/trips/${trip.id}/confirm`
 
-      const mail = await getMailClient();
+      const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.GMAIL_USER,
+          pass: process.env.GMAIL_PASS
+        }
+      });
 
-      const message = await mail.sendMail({
+      const message = await transporter.sendMail({
         from: {
           name: "Equipe plann.er",
           address: "oi@plann.er",

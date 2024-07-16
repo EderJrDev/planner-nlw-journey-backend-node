@@ -28,7 +28,7 @@ export async function confirmParticipant(app: FastifyInstance) {
 
       if (participant.is_confirmed) {
         return reply.redirect(
-          `http://localhost:3000/trips/${participant.trip_id}`
+          `http://localhost:5173/trips/${participant.trip_id}`
         );
       }
 
@@ -42,7 +42,7 @@ export async function confirmParticipant(app: FastifyInstance) {
       });
 
       return reply.redirect(
-        `http://localhost:3000/trips/${participant.trip_id}`
+        `http://localhost:5173/trips/${participant.trip_id}`
       );
     }
   );
