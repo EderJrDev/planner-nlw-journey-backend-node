@@ -4,8 +4,11 @@ import nodemailer from "nodemailer";
 import z from "zod";
 
 import { prisma } from "../lib/prisma";
-import { getMailClient } from "../lib/mail";
 import { dayjs } from "../lib/dayjs";
+
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export async function createTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
