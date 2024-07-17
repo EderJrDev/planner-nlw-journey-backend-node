@@ -80,17 +80,17 @@ export async function createTrip(app: FastifyInstance) {
       const confirmationLink =  `https://planner-nlw-journey-backend-node.vercel.app/trips/${trip.id}/confirm`
 
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'SendGrid',
         auth: {
-          user: process.env.GMAIL_USER,
-          pass: process.env.GMAIL_PASS
+          user: 'apikey', // This is the string literal 'apikey', not a placeholder
+          pass: process.env.SENDGRID_API_KEY,
         }
       });
 
       const message = await transporter.sendMail({
         from: {
           name: "Equipe plann.er",
-          address: "oi@plann.er",
+          address: "ederjuninho2003@gmail.com",
         },
         to: {
           name: owner_name,

@@ -40,7 +40,7 @@ export async function confirmTrip(app: FastifyInstance) {
       }
 
       if (trip.is_confirmed) {
-        return reply.redirect(`http://localhost:3000/trips/${tripId}`);
+        return reply.redirect(`http://localhost:5173/trips/${tripId}`);
       }
 
       await prisma.trip.update({
@@ -52,10 +52,10 @@ export async function confirmTrip(app: FastifyInstance) {
       const formattedEndDate = dayjs(trip.ends_at).format("LL");
 
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: 'SendGrid',
         auth: {
-          user: process.env.GMAIL_USER,
-          pass: process.env.GMAIL_PASS
+          user: 'apikey', // This is the string literal 'apikey', not a placeholder
+          pass: process.env.SENDGRID_API_KEY,
         }
       });
 
@@ -65,7 +65,7 @@ export async function confirmTrip(app: FastifyInstance) {
           const message = await transporter.sendMail({
             from: {
               name: "Equipe plann.er",
-              address: "oi@plann.er",
+              address: "ederjuninho2003@gmail.com",
             },
             to: participant.email,
             subject: `Confirme sua presença na viagem para ${trip.destination} em ${formattedStartDate}`,
