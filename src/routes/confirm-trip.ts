@@ -40,7 +40,7 @@ export async function confirmTrip(app: FastifyInstance) {
       }
 
       if (trip.is_confirmed) {
-        return reply.redirect(`http://localhost:5173/trips/${tripId}`);
+        return reply.redirect(`https://planner-nlw-journey-frontend-react.vercel.app/trips/${tripId}`);
       }
 
       await prisma.trip.update({
@@ -88,7 +88,7 @@ export async function confirmTrip(app: FastifyInstance) {
         })
       );
 
-      return reply.redirect(`http://localhost:5173/trips/${tripId}`);
+      return reply.redirect(`https://planner-nlw-journey-frontend-react.vercel.app/trips/${tripId}`);
     }
   );
 }

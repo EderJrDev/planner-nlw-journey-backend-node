@@ -20,9 +20,7 @@ import { getParticipant } from "./routes/get-participant";
 const app = fastify();
 
 app.register(cors, {
-  // credentials: true,
-  // origin: "http://localhost:5173",
-  origin: "*",
+  origin: "https://planner-nlw-journey-frontend-react.vercel.app/",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
