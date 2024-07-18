@@ -66,14 +66,6 @@ export async function createTrip(app: FastifyInstance) {
         },
       });
 
-      await prisma.participant.create({
-        data: {
-          name: owner_name,
-          email: owner_email,
-          trip_id: trip.id,
-        },
-      });
-
       const formattedStartDate = dayjs(starts_at).format("LL");
       const formattedEndDate = dayjs(ends_at).format("LL");
 
